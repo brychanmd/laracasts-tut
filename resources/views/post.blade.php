@@ -7,14 +7,14 @@
 	<link rel="stylesheet" href="/app.css">
 </head>
 <body>
-
-	<?php foreach ( $posts as $post ) : ?>
 	
-		<article>
-			<?php echo $post; ?>
-		</article>
+	<article>
+		
+		<?php echo $post; ?>
 
-	<?php endforeach; ?>
+	</article>
+
+	<a href="/">Go back</a>
 
 
 </body>

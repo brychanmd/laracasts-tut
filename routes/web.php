@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +20,11 @@ Route::get(
 		return view( 'posts' );
 	}
 );
+
+Route::get('posts/{post}', function ($slug) {
+	return view('post', [
+		'post' => Post::find($slug)
+	]);
+})->where('post', '[A-z]+');
 
 // Route::get('/posts/{post}', 'App\Http\Controllers\PostsController@show');
