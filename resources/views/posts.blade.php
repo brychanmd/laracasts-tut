@@ -11,7 +11,12 @@
 	<?php foreach ( $posts as $post ) : ?>
 	
 		<article>
-			<?php echo $post; ?>
+			<a href="/posts/<?php echo $post->slug; ?>">
+				<h1><?php echo $post->title; ?></h1>
+			</a>
+			<div>
+				<?php echo $post->excerpt; ?>
+			</div>
 		</article>
 
 	<?php endforeach; ?>
