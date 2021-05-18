@@ -10,7 +10,11 @@
 	
 	<article>
 		
-		<?php echo $post; ?>
+		<h1>
+		<?php echo $post->title; ?>
+		</h1>
+
+		<?php echo $post->body; ?>
 
 	</article>
 
