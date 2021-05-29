@@ -1,28 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>My Blog</title>
-	<link rel="stylesheet" href="/app.css">
-</head>
-<body>
-
-	<?php foreach ( $posts as $post ) : ?>
+<x-layout>
 	
+		@foreach($posts as $post)
+
 		<article>
-			<a href="/posts/<?php echo $post->slug; ?>">
-				<h1><?php echo $post->title; ?></h1>
-			</a>
+			<h1>
+				<a href="/posts/{{ $post->slug }}">
+					{{ $post->title }}
+				</a>
+			</h1>
+
 			<div>
-				<?php echo $post->excerpt; ?>
+				{{ $post->excerpt }}
 			</div>
 		</article>
 
-	<?php endforeach; ?>
-
-
-</body>
-</html>
-
+    	@endforeach
+	
+</x-layout>
 
