@@ -6,6 +6,7 @@ use App\Http\Controllers\SessionsController;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -32,5 +33,7 @@ Route::get('authors/{author:username}', function (User $author) {
 
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
-Route::post('logout', [SessionsController::class, 'destroy']);
-// Route::post('login', [SessionsController::class, 'store']);
+
+Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
+Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest');
+Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
