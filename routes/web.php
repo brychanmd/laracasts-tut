@@ -1,14 +1,15 @@
 <?php
 
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
+use GuzzleHttp\Middleware;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
-use App\Models\Post;
-use App\Models\Category;
-use App\Models\User;
-use GuzzleHttp\Middleware;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\PostCommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', [PostController::class, 'index'])->name('home');
 
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
+Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
 Route::get('authors/{author:username}', function (User $author) {
 	return view('posts.index', [
