@@ -1,15 +1,19 @@
 <?php
 
+use App\Http\Controllers\NewsletterController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use GuzzleHttp\Middleware;
+use MailchimpMarketing\ApiClient;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\PostCommentsController;
+use App\Services\Newsletter;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +25,8 @@ use App\Http\Controllers\PostCommentsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('newsletter', NewsletterController::class );
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 
